@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <title>Tokyo Traveller</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+  <!-- Bootstrap jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <!-- Eksternt javascript -->
+  <script src="scripts.js"></script>
+</head>
+<body>
+
+<!-- Menylinje. Legg merke til <nav>-elementet for å vise at dette er navigasjon til personer med hjelpeverktøy-->
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#tokyoNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+      </div>
+    </div>
+    <div class="collapse navbar-collapse" id="tokyoNavbar">
+   <ul class="nav navbar-nav navbar-right">
+        <li><a href="#spillet" class="left-underline">OM SPILLET</a></li>
+        <li><a href="#omoss" class="left-underline">OM OSS</a></li>
+        <li><a href="#kontakt" class="left-underline">KONTAKT</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Første Container (Video)-->
+<div class="container-fluid bg-1 text-center">
+  <h1 class="h1">Tokyo Traveller</h1>
+  <div class="container-fluid">
+    <video autoplay muted loop id="autoVideo"><source src="media/TokyoTraveler.mp4" type="video/mp4">
+       Nettleseren din støtter ikke videoelementet.
+    </video>
+  </div>
+    <div class="col-md-12">
+      <a href="game" class="btn btn-primary btn-lg" role="button">Spill nå!</a>
+    </div>
+</div>
+
+<!-- Andre Container (Om spillet)-->
+<div class="container-fluid bg-2 text-center">
+  <h2 id="spillet" class="margin">Om spillet</h2>
+    <p>Himari er på oppdrag i 2121´s Japan, og du må hjelpe henne med å redde menneskeheten fra corona! Det er ikke mange liv igjen på planeten, men så lenge du og Himari jobber sammen, så finnes det håp for oss alle! </p>
+      <button id="historieKnapp" class="btn btn-default btn-ld" onClick="visHistorie()">Jeg vil vite mer!</button>
+    <div id="historie" hidden>
+    <div class="row">
+      <h2>Historien om vår heltinne</h2>
+    <div class="col-sm-3">
+      <h3>Korona herjer fortsatt!</h3>
+      <img src="media/1.png" class="img-responsive margin" alt="Portrett av Konrad">
+      <p>Historien finner sted i et dystopiskt postapokalyptisk univers, der heltinnen Himari lever i 2121´s Japan. Korona har nå herjet på jorden i over 100 år, og det er ikke mange mennesker igjen. Gjennom generasjoner har desperate forsøk på teknologiske fremskritt sendt menneskeheten ut i kaos der selv de fysiske lovene har blitt utfordret!</p>
+    </div>
+    <div class="col-sm-3">
+      <h3>Himari skal redde oss</h3>
+      <img src="media/2.png" class="img-responsive margin" alt="Portrett av Herman">
+          <p>Du spiller som Himari, som er en ung Ronin sendt fra Tokugawa-regionen. Rōnin, er en betegning som blir gitt herreløse samuraier i det føydale Japan, og Himari har trent for denne oppgaven siden hun var en liten Kodomodachi.</p>
+    </div>
+    <div class="col-sm-3">
+      <h3>Hun har spesielle krefter</h3>
+      <img src="media/3.png" class="img-responsive margin" alt="Portrett av Peter">
+    <p>Gjennom eksperimentell og farlig forskning har verdenssamfunnet kommet frem til en vaksine. Denne beskytter deg ikke fullstendig fra Korona, men den lar deg tøyle kraftene til gravitasjonen selv! Du må bruke gravitasjonskreftene for å finne spor i kampen for en mer effektiv vaksine.</p>
+    </div>
+    <div class="col-sm-3">
+      <h3>Nå er det opp til deg!</h3>
+      <img src="media/4.png" class="img-responsive margin" alt="Portrett av Andreas">
+    <p>Nå er det opp til deg og Himari! Vil dere sende verden ut i fullstendig kollaps, eller redde samfunnet så vi alle snart kan feire jul og 17.mai sammen igjen? Himari betyr sol, og nå er det deres tid for å skinne! Lykke til!</p>
+    </div>
+  </div>
+  <a href="game" class="btn btn-primary btn-lg" role="button">Spill nå!</a>
+  </div>
+</div>
+
+<!-- Tredje Container (Om oss) -->
+<div class="container-fluid bg-4 text-center">
+  <h2 id="omoss" class="margin">Hvem er gruppe 20?</h2>
+  <p>Gruppe 20 består av fire karer fra vidt forskjellige steder i Norge. Felles for alle er at vi går tredjeåret i digital forretningsutvikling, og at vi alle har lyst til å få en bedre karakter (les: godkjent) i dette faget.</p>
+  <div class="row">
+    <div class="col-sm-3">
+      <h3>Konrad</h3>
+      <img src="media/konrad-img.jpg" class="img-responsive margin" alt="Portrett av Konrad">
+      <p>Konrad er 21 år og kommer fra Oslo som er en liten by i nærheten av Ski. Han kom opp til Trondheim i 2021 for å begynne på studier. Han jobber i år i studentorganisasjonen Shift Hyperloop som markedsleder. Gjennom spillprosjektet har han lært seg å benytte seg av biblioteket Phaser 3.0, og er utrolig lei av programmering nå</p>
+    </div>
+    <div class="col-sm-3">
+      <h3>Herman</h3>
+      <img src="media/herman-img.jpg" class="img-responsive margin" alt="Portrett av Herman">
+      <p>Herman er 22 år gammel. Er fra Furnes, like utenfor Hamar, og flyttet opp til Trondheim i 2019 for å begynne på studier. Jobber ved siden av studiene i VilMer som produktutvikler. Tilbringer fritiden sammen med kompiser, kjæresten eller kollektivet sitt. Har lært å sette opp GitHub gjennom dette prosjektet og er storfornøyd med det (skulle vel lært dette i første klasse).</p>
+    </div>
+    <div class="col-sm-3">
+      <h3>Peter</h3>
+      <img src="media/peter-img.jpg" class="img-responsive margin" alt="Portrett av Peter">
+      <p>Hei, jeg heter Peter og er 21 år gammel. Jeg er nå på tredjeåret i digfor. På fritiden liker jeg å spille Tokyo Traveller (TT) og dra på Studentersamfunnet. Så hvis du lurer på hvordan man blir verdens beste i TT og sjekke opp damer på Boddis, ta kontakt med meg! Snakkes!</p>
+    </div>
+    <div class="col-sm-3">
+      <h3>Andreas</h3>
+      <img src="media/andreas-img.jpg" class="img-responsive margin" alt="Portrett av Andreas">
+      <p>Andreas er 23 år og kommer fra Lørenskog. Han studerer Digital Forretningsutvikling og Økonomi og administrasjon 3. klasse. Andreas liker å engasjere seg i frivillige verv, og er i dag nestleder i Start NTNU. På fritiden liker han å trene, jobbe med skole og andre prosjekter. Den siste tiden har han vært spesielt interessert i maskinlæring og webutvikling.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Fjerde Container (Kontakt oss)-->
+<div id="kontakt" class="container-fluid bg-3 text-center">
+  <h2 class="margin">Kontakt oss</h2>
+  <p>Vi er tilgjengelig på mail og telefon, og svarer gjerne på innspill og spørsmål angående prosjektet!</p>
+  <a href="mailto:peppes@peppes.no" class="btn btn-default btn-md">
+   Send en e-post
+  </a>
+  <a href="tel:+4722224444" class="btn btn-default btn-md">
+    Ring
+   </a>
+</div>
+
+<!-- Footer -->
+<footer class="container-fluid bg-2 text-center">
+  <p>Laget av gruppe 20 - Webteknikker og teamarbeid - 2021</p>
+  <a href="game"><p>Prøv spillet nå!</p></a>
+</footer>
+</body>
+</html>

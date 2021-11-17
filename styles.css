@@ -1,0 +1,74 @@
+/* Samlet CSS for nettsiden */
+
+/* Body */
+body {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  line-height: 1.8;
+  font-family: "Permanent Marker", cursive;
+}
+/* Standard skrift p */
+p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.3em;
+}
+/* Knapper */
+.btn {
+  font-family: "Montserrat", sans-serif;
+}
+/* Margin */
+.margin {
+  margin-bottom: 45px;
+}
+/* Farger på containerne */
+.bg-1 {
+  background-color: #f4888a; /* Rosa */
+  color: #ffffff;
+}
+.bg-2 {
+  background-color: #0d0427; /* Svart */
+  color: #ffffff;
+}
+.bg-3 {
+  background-color: #7841bd; /* Lilla */
+  color: #ffffff;
+}
+.bg-4 {
+  background-color: #6e92d0; /* Blå */
+  color: #fff;
+}
+/* Legger til padding på topp/bunn av containere for luft */
+.container-fluid {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+/* Menylinje på toppen*/
+.navbar {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  border: 0;
+  border-radius: 0;
+  margin-bottom: 0;
+  letter-spacing: 5px;
+  background-color: #0d0427; /* Svart */
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.85em;
+}
+.navbar-nav {
+  color: #f4888a;
+}
+.navbar-default .navbar-nav > li > a {
+  color: rgb(255, 255, 255);
+}
+/* Skriftfarge meny v. hover */
+.navbar-nav li a:hover {
+  color: #f3f3f3 !important;
+}
+/* Video som autospiller øverst på nettsiden */
+#autoVideo {
+  position: relative;
+  align-self: auto;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 7em;
+}
