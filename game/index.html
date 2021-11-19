@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <title>Spill Tokyo Traveller!</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+  <!-- Bootstrap jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <!-- Eksternt javascript -->
+  <!-- <script src="scripts.js"></script> -->
+  <script src="//cdn.jsdelivr.net/npm/phaser@3.24.1/dist/phaser.min.js"></script>
+  <script src="scene-one.js"></script>
+  <script src="scene-two.js"></script>
+    <script src="scene-three.js"></script>
+      <script src="scene-four.js"></script>
+      <script src="scene-five.js"></script>
+      <script src="scene-six.js"></script>
+        <script src="scene-seven.js"></script>
+          <script src="scene-eight.js"></script>
+</head>
+<body>
+
+<!-- Menylinje. Legg merke til <nav>-elementet for å vise at dette er navigasjon til personer med hjelpeverktøy-->
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#tokyoNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+      </div>
+    </div>
+    <div class="collapse navbar-collapse" id="tokyoNavbar">
+   <ul class="nav navbar-nav navbar-right">
+        <li><a href="#spillet" class="left-underline">OM SPILLET</a></li>
+        <li><a href="#omoss" class="left-underline">OM OSS</a></li>
+        <li><a href="#kontakt" class="left-underline">KONTAKT</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Spillcontainer -->
+<div class="container-fluid bg-1 text-center">
+  <h1 class="h1">Tokyo Traveller</h1>
+  <div class="container-fluid">
+  <div id="game"></div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="container-fluid bg-2 text-center">
+  <p>Laget av gruppe 20 - Webteknikker og teamarbeid - 2021. Bruk "space" for å interacte med spillet!</p>
+  <a href="../index.html"><p>Tilbake til forsiden</p></a>
+</footer>
+<script>
+// alt under definerer regler som skal være gjeldende for hele spillet.
+    const phaserConfig = {
+      type: Phaser.AUTO,
+      parent: "game",
+      width: 800,
+      height: 600,
+      physics: {
+          default: 'arcade',
+          arcade: {
+              gravity: { y: 300, x:0 },
+              debug: false
+          }
+      },
+      backgroundColor: "#5DACD8",
+      scene: [ SceneOne, SceneTwo, SceneThree, SceneFour, SceneFive, SceneSix,SceneSeven, SceneEight] //alle scnenene må her for å kunne calle på de ellers i spillet.
+    };
+
+    var player;
+    let goodorbadtalk;
+    var platforms;
+    var cursors;
+    var checktime;
+    let score = 3
+
+
+    function collectStar (player, star, newscene) //dårlig navningitt funksjon som viser hva som skjer når sprøyten hentes i første nivå. Burde være mer dynamisk.
+    {
+        star.disableBody(true, true);
+
+
+
+           this.cameras.main.fade()
+           this.cameras.main.once('camerafadeoutcomplete', function (camera) {
+             this.scene.start("SceneFive", {
+               "message": "Game Over"
+     });
+
+        }, this);
+
+    }
+
+    function hit (player, enemy) //egt en testfunksjon for som funker i sammenheng med den varlige taket på bane 2.  mest brukt til å prøve seg frem med død i spillet.
+    {
+      //  star.disableBody(true, true);
+           this.cameras.main.fade()
+           this.cameras.main.once('camerafadeoutcomplete', function (camera) {
+             this.scene.start(this.Scene, {
+               "message": "Game Over"
+
+
+     });
+
+
+        }, this);
+
+    }
+    function remaining (player, goal) //teller hvor mange bokser vi har funnet i bane 2.
+    {
+       goal.disableBody(true, true);
+
+          this.score = this.score-1
+
+          scoreText.setText("Blue gates remaining: " + this.score)
+
+          if(this.score === 0){alert("wow u are so good")
+          this.scene.start("SceneSix")
+        }
+
+
+
+    }
+    function lastlevel(player, goal){ //siste bane, sender oss til siste cutscene.
+      this.scene.start("SceneSeven")
+
+    }
+
+
+
+
+    function gravityrush(check){ //gravityrush funksonen bestemmer oppførselen for oss når vi endrer gravitasjon.
+      check.input.keyboard.on('keydown_W', function (event) { // når W trykkes endres gravitasjon på den måten. Altså den reverserers enkelt og greit.
+            //  if(player.body.touching.down){
+                this.defGravity = -600 //idk hvorfor jeg definerer det på denne måten menmen
+            player.setGravityY(this.defGravity)
+            player.setGravityX(0)
+
+
+         // W key down
+        // player.flipX = true;
+         player.angle = 180 //roterer spilleren til riktig retning
+         player.flipX = true; //og sikrer at spritesene vil peke i riktig retning.
+  //  }
+    });
+    check.input.keyboard.on('keydown_S', function (event) {//kun keydown for bare generelt
+      //if(player.body.touching.up){
+        this.defGravity = 0
+      player.setGravityY(this.defGravity)
+      player.setGravityX(0)
+
+    // W key down
+  //  player.flipX = false
+    player.angle = 0
+  //  }
+
+    })
+    check.input.keyboard.on('keydown_A', function (event) {//kun keydown for bare generelt
+
+        this.defGravity = 0
+        player.angle = 90
+      player.setGravityY(-300) //må være -300 for å motvirke spillets generelle gravitasjon
+      player.setGravityX(-20000)// av en eller annen grunn må x være lik 20000 for å emulere en lik gravitasjon som y på 600. Prøvd som bare det å debugge det, men har gitt opp på det.
+    // W key down
+    //player.flipY = false;
+
+
+    })
+    check.input.keyboard.on('keydown_D', function (event) {//kun keydown for bare generelt
+
+        this.defGravity = 0
+        player.angle = -90
+      player.setGravityY(-300)
+      player.setGravityX(20000)
+    // W key down
+    //player.flipY = false;
+
+
+    })
+    check.input.keyboard.on('keydown_X', function (event) {//kun keydown for bare generelt
+//egt ikke en del av spillet, men lar det være i, gjør ting litt enklere. . Bare en funksjon for å stoppe karakteren luften helt. Brukt for debugging.
+        this.defGravity = 0
+        player.angle = 0
+      player.setVelocityX(0)
+        player.setVelocityY(0)
+        player.setGravityY(-300)
+        player.setGravityX(0)
+    // W key down
+    //player.flipY = false;
+
+
+    })
+
+
+    }
+
+    function controlscheme(time){ // her har vi denne grusomme funksjonen. Skrev dette for sånn 2 måneder siden så mulig jeg skriver litt feil kommentarer her.
+      speed = 320
+
+
+
+      if(cursors.up.isDown&&(player.angle === -90|| player.angle ===90) /*&&(player.body.touching.right || player.body.touching.left)*/ )
+     { player.anims.play('right', true)
+      player.setVelocityY(-speed);
+      player.setVelocityX(0);
+      if(player.angle === -90){
+      player.flipX = false}
+      else{player.flipX = true}
+      }
+      else if (cursors.down.isDown &&(player.angle === -90|| player.angle ===90) /*&&(player.body.touching.right || player.body.touching.left)*/)
+      {
+        player.setVelocityY(speed)
+        player.setVelocityX(0);
+        player.anims.play('right',true)
+        if(player.angle === -90){
+        player.flipX = true}
+        else{player.flipX = false} }
+
+     else if (cursors.left.isDown && (player.angle === 0|| player.angle === -180))
+       {
+           player.setVelocityX(-speed);
+          //   player.setVelocityY(0)
+
+
+
+           player.anims.play('right', true);
+
+           if(player.angle === 0){player.flipX = true;}
+          else if (player.angle === -180){player.flipX = false}
+            // flip the sprite to the left
+       }
+       else if (cursors.right.isDown && (player.angle === 0|| player.angle === -180))
+       {
+
+           player.setVelocityX(speed);
+           //player.setVelocityY(0)
+
+           player.anims.play('right', true);
+           if(player.angle === 0){player.flipX = false;} // flip the sprite to the left
+           else if (player.angle === -180){player.flipX = true}
+       }
+       else if(player.angle === 90 || player.angle === -90){
+         player.setVelocityY(0)
+         player.setVelocityX(0);
+         player.anims.play('turn')
+       }
+       else
+       {
+           player.setVelocityX(0);
+
+
+           player.anims.play('turn')
+
+
+
+
+
+       }
+
+
+       if (cursors.up.isDown && player.body.touching.down && (player.angle === 0|| player.angle === -180))
+       {
+
+
+           player.setVelocityY(-150);
+
+
+       }
+        else if(cursors.down.isDown && player.body.touching.up && (player.angle === 0|| player.angle === -180)){
+
+           player.setVelocityY(150);
+
+       }
+       else if(cursors.left.isDown && player.body.touching.right && (player.angle === -90|| player.angle ===90)){
+
+          player.setVelocityX(-2000);
+
+      }
+      else if(cursors.right.isDown && player.body.touching.left && (player.angle === -90|| player.angle ===90)){
+
+         player.setVelocityX(2000);
+
+     }
+
+
+
+
+
+    }
+
+    const game = new Phaser.Game(phaserConfig);
+
+</script>
+</body>
+</html>
