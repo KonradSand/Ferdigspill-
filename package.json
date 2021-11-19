@@ -1,0 +1,21 @@
+{
+  "name": "desktop-application",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "browserslist": [
+    "electron 15.3"
+  ],
+  "dependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "@babel/register": "^7.15.3",
+    "electron": "^15.3.0"
+  },
+  "devDependencies": {
+    "chokidar": "^3.5.2",
+    "prettier": "^2.4.1"
+  }
+}
