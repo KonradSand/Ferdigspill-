@@ -1,7 +1,7 @@
 {
-  "name": "desktop-application",
+  "name": "Ferdigspill-",
   "version": "1.0.0",
-  "main": "main.js",
+  "main": "index.js",
   "scripts": {
     "start": "electron ."
   },
